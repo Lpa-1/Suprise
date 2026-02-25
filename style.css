@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    color: #5a0d0d;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(#80000015 1px, transparent 1px),
+        linear-gradient(90deg, #80000015 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 8vw, 65px);
+    letter-spacing: 4px;
+    margin: 0 0 24px 0;
+}
+
+button {
+    padding: 15px 45px;
+    border-radius: 40px;
+    border: 2px solid #800000;
+    background-color: white;
+    color: #800000;
+    font-size: clamp(14px, 4vw, 18px);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    touch-action: manipulation;
+}
+
+button:hover {
+    background-color: #800000;
+    color: white;
+}
+
+/* ── Subtle shake on hover (CSS-only, most reliable) ── */
+@keyframes shake {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(-2deg); }
+    40%  { transform: rotate(2deg); }
+    60%  { transform: rotate(-2deg); }
+    80%  { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* applied to knife, sliced cake, gift via class */
+.shakeable:hover {
+    animation: shake 0.7s ease-in-out infinite;
+}
+
+/* touch devices — JS adds/removes .shaking class */
+.shaking {
+    animation: shake 0.7s ease-in-out infinite;
+}
+
+/* ── Cake page ── */
+.cake-area {
+    position: relative;
+    display: inline-block;
+    padding-right: clamp(80px, 22vw, 140px);
+}
+
+.cake-img {
+    width: clamp(180px, 55vw, 300px);
+    display: block;
+}
+
+.knife-img {
+    width: clamp(70px, 18vw, 120px);
+    position: absolute;
+    right: 0;
+    top: 30%;
+    cursor: pointer;
+    touch-action: manipulation;
+    transform-origin: bottom center;
+}
+
+/* sliced cake becomes clickable after knife click */
+.cake-img.sliced {
+    cursor: pointer;
+}
+
+/* ── Gift page ── */
+.gift-img {
+    width: clamp(150px, 50vw, 250px);
+    cursor: pointer;
+    touch-action: manipulation;
+    transform-origin: bottom center;
+}
+
+/* completely hidden until JS reveals it */
+.message-area {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 20px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.cat-img {
+    width: clamp(80px, 25vw, 140px);
+    border-radius: 12px;
+}
+
+.message {
+    background: white;
+    border: 2px solid #800000;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: min(600px, 90vw);
+    text-align: center;
+    line-height: 1.8;
+    font-size: clamp(13px, 3.5vw, 15px);
+}
